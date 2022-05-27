@@ -4,10 +4,10 @@ import Container from '@mui/material/Container';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import React, { useState } from "react";
-import "./UserCredentialsDialog.css";
+import "./LoginCredentialsDialog.css";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 // Component that presents a dialog to collect credentials from the user
-export default function UserCredentialsDialog({
+export default function LoginCredentialsDialog({
     open,
     onSubmit,
     onClose,
@@ -16,8 +16,6 @@ export default function UserCredentialsDialog({
 }) {
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
-    let [email, setEmail] = useState("");
-    let [occupation, setOccupation] = useState("");
     let [userType, setUserType] = useState("user");
     return (
         <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
@@ -41,24 +39,6 @@ export default function UserCredentialsDialog({
                         onChange={({ target: { value } }) => setPassword(value)}
                     />
                 </Container>
-                <Container className="form-item">
-                    <TextField
-                        fullWidth
-                        label="Email"
-                        type="text"
-                        value={email}
-                        onChange={({ target: { value } }) => setEmail(value)}
-                    />
-                </Container>
-                <Container className="form-item">
-                    <TextField
-                        fullWidth
-                        label="Occupation"
-                        type="text"
-                        value={occupation}
-                        onChange={({ target: { value } }) => setOccupation(value)}
-                    />
-                </Container>
                 <FormControl>
                         <InputLabel id="user-type-label">Login Type</InputLabel>
                         <Select
@@ -76,7 +56,7 @@ export default function UserCredentialsDialog({
                     <Button
                         color="primary"
                         variant="contained"
-                        onClick={() => onSubmit(username, password, email, occupation, userType)}
+                        onClick={() => onSubmit(username, password)}
                     >
                         {submitText}
                     </Button>
